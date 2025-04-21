@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonamama - Alimentos Saudáveis e Naturais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .bg-orange-bonamama {
+            background-color: #FE6901;
+        }
+        
+        .bg-green-bonamama {
+            background-color: #00A74A;
+        }
+        
+        .bg-red-bonamama {
+            background-color: #FF1B1F;
+        }
+        
+        .text-orange-bonamama {
+            color: #FE6901;
+        }
+
+        .text-withe-bonamama {
+            color: #FFFF;
+        }
+        
+        .text-green-bonamama {
+            color: #00A74A;
+        }
+        
+        .text-red-bonamama {
+            color: #FF1B1F;
+        }
+        
+        .border-orange-bonamama {
+            border-color: #FE6901;
+        }
+        
+        .border-green-bonamama {
+            border-color: #00A74A;
+        }
+        
+        .border-red-bonamama {
+            border-color: #FF1B1F;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #FE6901 0%, #FE6901 50%, #FE6901 100%);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .divider-line {
+            background-color: #FF1B1F;
+            height: 2px;
+            width: 6rem;
+        }
+        
+        .new-badge {
+            background-color: #FF1B1F;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            z-index: 100;
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons a {
+                width: 100%;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-section {
+                flex-direction: column;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-section {
+                flex-direction: column;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 0.5rem;
+                width: 100%;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/message/TYHHTPL7OHOAI1" 
+        class="whatsapp-button" 
+        target="_blank"
+        aria-label="Fale conosco no WhatsApp">
+         <i class="fab fa-whatsapp"></i>
+     </a>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="close-menu" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        <nav class="flex flex-col space-y-6 mt-8">
+            <a href="#home" class="font-medium text-gray-700 hover:text-orange-bonamama transition text-lg" onclick="toggleMobileMenu()">Home</a>
+            <a href="#products" class="font-medium text-gray-700 hover:text-orange-bonamama transition text-lg" onclick="toggleMobileMenu()">Produtos</a>
+            <a href="#about" class="font-medium text-gray-700 hover:text-orange-bonamama transition text-lg" onclick="toggleMobileMenu()">Sobre Nós</a>
+            <a href="#contact" class="font-medium text-gray-700 hover:text-orange-bonamama transition text-lg" onclick="toggleMobileMenu()">Contato</a>
+        </nav>
+        <div class="mt-8 flex space-x-4">
+            <a href="#" class="text-gray-700 hover:text-orange-bonamama text-xl">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="text-gray-700 hover:text-orange-bonamama text-xl">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/logo.jpg?text=Bonamama" alt="Bonamama Logo" class="h-12" style="border-radius: 50px;size: 4in 6in;max-width: 50%;height: auto;">
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="font-medium text-gray-700 hover:text-orange-bonamama transition">Home</a>
+                <a href="#products" class="font-medium text-gray-700 hover:text-orange-bonamama transition">Produtos</a>
+                <a href="#about" class="font-medium text-gray-700 hover:text-orange-bonamama transition">Sobre Nós</a>
+                <a href="#contact" class="font-medium text-gray-700 hover:text-orange-bonamama transition">Contato</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-700 hover:text-orange-bonamama hidden sm:inline-block">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="text-gray-700 hover:text-orange-bonamama hidden sm:inline-block">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient py-12 md:py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 hero-content">
+                <h1 class="text-3xl md:text-5xl font-bold text-white mb-6">Alimentos Saudáveis e Naturais</h1>
+                <p class="text-lg md:text-xl text-white mb-8">Descubra os melhores produtos naturais da Bonamama, feitos com amor e ingredientes selecionados.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 hero-buttons">
+                    <a href="#products" class="bg-white text-orange-bonamama font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 text-center">Nossos Produtos</a>
+                    <a href="#about" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-orange-bonamama transition duration-300 text-center">Conheça a Bonamama</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="images/amendoin_03.jpg?text=Bonamama+Products" alt="Bonamama Products" class="rounded-lg shadow-xl floating max-w-full h-auto" style="max-width: 80%;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 features-grid">
+                <div class="text-center p-6 rounded-lg">
+                    <div class="bg-orange-bonamama text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-orange-bonamama">100% Natural</h3>
+                    <p class="text-gray-600">Produtos feitos com ingredientes naturais e selecionados, sem conservantes artificiais.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg">
+                    <div class="bg-orange-bonamama text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-orange-bonamama">Feito com Amor</h3>
+                    <p class="text-gray-600">Cada produto é preparado com cuidado e dedicação para oferecer o melhor sabor e qualidade.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg">
+                    <div class="bg-orange-bonamama text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-orange-bonamama">Qualidade Garantida</h3>
+                    <p class="text-gray-600">Processos rigorosos de produção para garantir produtos de alta qualidade para você e sua família.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Nossos Produtos</h2>
+                <div class="divider-line mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 product-grid">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="/images/alho_01.jpg" alt="Alho Roxo" class="w-full h-48 sm:h-64 object-cover">
+                        <div class="absolute top-2 right-2 new-badge text-white text-xs font-bold px-2 py-1 rounded">LANÇAMENTO</div>
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-orange-bonamama">Alho Roxo</h3>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base">Alho Roxo sabor e qualidade que conquistam o coração.</p>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                            <span class="text-orange-bonamama font-bold text-lg">R$ 12,90</span>
+                            <button class="bg-green-bonamama text-white px-4 py-2 rounded-full hover:bg-green-700 transition text-sm sm:text-base">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="images/amendoin_03.jpg" alt="Amendoim com Casca e Torrado" class="w-full h-48 sm:h-64 object-cover">
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-orange-bonamama">Amendoim com Casca e Torrado</h3>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base">Amendoim com Casca e Torrado, crocante e saboroso.</p>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                            <span class="text-orange-bonamama font-bold text-lg">R$ 8,90</span>
+                            <button class="bg-green-bonamama text-white px-4 py-2 rounded-full hover:bg-green-700 transition text-sm sm:text-base">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="images/amendoin_01.jpg" alt="Amendoim Cru com Pele" class="w-full h-48 sm:h-64 object-cover">
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-orange-bonamama">Amendoim Cru com Pele</h3>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base">Seleção premium de amendoim, nozes e frutas secas.</p>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                            <span class="text-orange-bonamama font-bold text-lg">R$ 10,90</span>
+                            <button class="bg-green-bonamama text-white px-4 py-2 rounded-full hover:bg-green-700 transition text-sm sm:text-base">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="images/sem_casca_com_sal.png" alt="Amendoim sem pele, torrado e Salgado" class="w-full h-48 sm:h-64 object-cover">
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2 text-orange-bonamama">Amendoim sem pele, torrado e Salgado</h3>
+                        <p class="text-gray-600 mb-4 text-sm sm:text-base">Amendoim torrado e salgado, sem pele, crocante e cheio de sabor! Perfeito para qualquer hora do dia.</p>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                            <span class="text-orange-bonamama font-bold text-lg">R$ 12,90</span>
+                            <button class="bg-green-bonamama text-white px-4 py-2 rounded-full hover:bg-green-700 transition text-sm sm:text-base">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-orange-bonamama text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition">Ver Todos os Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 md:py-16 bg-white about-section">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="images/alho_01.jpg?text=Bonamama+Team" alt="Alho Roxo" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Sobre a Bonamama</h2>
+                    <div class="divider-line mb-6"></div>
+                    <p class="text-gray-600 mb-4">A Bonamama nasceu do amor por alimentos saudáveis e da vontade de oferecer produtos naturais de alta qualidade para todos.</p>
+                    <p class="text-gray-600 mb-4">Nossa missão é transformar a alimentação das pessoas através de produtos nutritivos, saborosos e feitos com ingredientes selecionados.</p>
+                    <p class="text-gray-600 mb-6">Trabalhamos com pequenos produtores locais, garantindo não apenas a qualidade dos nossos produtos, mas também o apoio à agricultura familiar e ao comércio justo.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="bg-orange-bonamama bg-opacity-10 p-4 rounded-lg">
+                            <h4 class="font-bold text-withe-bonamama mb-2">Missão</h4>
+                            <p class="text-black-600">Promover saúde através de alimentos naturais e nutritivos.</p>
+                        </div>
+                        <div class="bg-orange-bonamama bg-opacity-10 p-4 rounded-lg">
+                            <h4 class="font-bold text-withe-bonamama mb-2">Visão</h4>
+                            <p class="text-black-600">Ser referência em alimentos saudáveis no Brasil.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">O que dizem nossos clientes</h2>
+                <div class="divider-line mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 testimonials-grid">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-orange-bonamama text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Acombinação do sabor crocante e tostado do amendoim com a cremosidade e doçura do açaí é simplesmente incrível!!"</p>
+                    <div class="flex items-center">
+                        <img src="images/foto_01.jpg?text=Client" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold">Vitor Gabriel de Souza</h4>
+                            <p class="text-gray-500 text-sm">Teresina, PI</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-orange-bonamama text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"É o melhor de Teresina, não tem jeito!!"</p>
+                    <div class="flex items-center">
+                        <img src="images/foto_02.jpg?text=Client" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold">Carol Neves</h4>
+                            <p class="text-gray-500 text-sm">Teresina, PI</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-orange-bonamama text-2xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Compro de olho fechado esse alho. Sucesso amg 👏🏻👏🏻👏🏻"</p>
+                    <div class="flex items-center">
+                        <img src="images/foto_03.jpg?text=Client" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold">Mateo</h4>
+                            <p class="text-gray-500 text-sm">Teresina, PI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Siga-nos no Instagram</h2>
+                <p class="text-gray-600 mb-4">@bonamamaoficial</p>
+                <div class="divider-line mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 instagram-grid">
+                <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="overflow-hidden rounded-lg hover:opacity-90 transition">
+                    <img src="images/alho_02.jpg?text=Instagram+1" alt="Instagram Post" class="w-full h-full object-cover">
+                </a>
+                <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="overflow-hidden rounded-lg hover:opacity-90 transition">
+                    <img src="images/amendoin_03.jpg?text=Instagram+2" alt="Instagram Post" class="w-full h-full object-cover">
+                </a>
+                <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="overflow-hidden rounded-lg hover:opacity-90 transition">
+                    <img src="images/amendoin_beneficios_01.jpg?text=Instagram+3" alt="Instagram Post" class="w-full h-full object-cover">
+                </a>
+                <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="overflow-hidden rounded-lg hover:opacity-90 transition">
+                    <img src="images/cerveja_600.jpg?text=Instagram+4" alt="Instagram Post" class="w-full h-full object-cover">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Entre em Contato</h2>
+                <div class="divider-line mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row contact-section">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-xl font-bold mb-4 text-orange-bonamama">Informações de Contato</h3>
+                    <p class="text-gray-600 mb-6">Tem dúvidas, sugestões ou quer fazer um pedido especial? Entre em contato conosco!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-orange-bonamama text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Endereço</h4>
+                                <p class="text-gray-600">Rua das Castanhas, 123 - Centro<br>São Paulo - SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-orange-bonamama text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-600">contato@bonamama.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-orange-bonamama text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Telefone</h4>
+                                <p class="text-gray-600">(11) 1234-5678</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Horário de Funcionamento</h4>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex justify-between py-2 border-b border-gray-100">
+                                <span class="text-gray-600">Segunda - Sexta</span>
+                                <span class="font-medium">9:00 - 18:00</span>
+                            </div>
+                            <div class="flex justify-between py-2">
+                                <span class="text-gray-600">Sábado</span>
+                                <span class="font-medium">9:00 - 13:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-bold mb-4 text-orange-bonamama">Mande uma Mensagem</h3>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-1">Nome</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-bonamama focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-bonamama focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-1">Assunto</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-bonamama focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-1">Mensagem</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-bonamama focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="bg-green-bonamama text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition w-full md:w-auto">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 md:py-16 bg-orange-bonamama text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Assine nossa Newsletter</h2>
+            <p class="mb-8 max-w-2xl mx-auto">Receba novidades, promoções especiais e dicas de alimentação saudável diretamente no seu email.</p>
+            
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row newsletter-form">
+                <input type="email" placeholder="Seu melhor email" class="flex-grow px-4 py-3 rounded-l-lg sm:rounded-r-none focus:outline-none text-gray-800">
+                <button type="submit" class="bg-green-bonamama px-6 py-3 rounded-r-lg sm:rounded-l-none font-bold hover:bg-green-700 transition">Assinar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 footer-grid">
+                <div>
+                    <img src="images/logo.jpg?text=Bonamama" alt="Bonamama Logo" class="h-10" style="border-radius: 50px;max-width: 20%;height: 20%;">
+                    <!--<div class="flex items-center">
+                        <img src="images/logo.jpg?text=Bonamama" alt="Bonamama Logo" class="h-10" style="border-radius: 50px;max-width: 20%;height: 20%;">
+                        <p class="text-gray-400">Alimentos saudáveis e naturais feitos com amor e ingredientes selecionados.</p>
+                    </div>
+                    
+                    <img src="https://via.placeholder.com/150x50?text=Bonamama" alt="Bonamama Logo" class="h-10 mb-4">-->
+                    
+
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.instagram.com/bonamamaoficial/" target="_blank" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100095496424515" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/message/TYHHTPL7OHOAI1" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Links Úteis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition">Produtos</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">Sobre Nós</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contato</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Produtos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Castanhas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Frutas Secas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Barras de Cereais</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Granolas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Pastas de Oleaginosas</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Pagamento</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="bg-gray-800 p-2 rounded flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-2xl"></i>
+                        </div>
+                        <div class="bg-gray-800 p-2 rounded flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-2xl"></i>
+                        </div>
+                        <div class="bg-gray-800 p-2 rounded flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-2xl"></i>
+                        </div>
+                        <div class="bg-gray-800 p-2 rounded flex items-center justify-center">
+                            <i class="fab fa-cc-paypal text-2xl"></i>
+                        </div>
+                        <div class="bg-gray-800 p-2 rounded flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl"></i>
+                        </div>
+                        <div class="bg-gray-800 p-2 rounded flex items-center justify-center">
+                            <i class="fas fa-money-bill-wave text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Bonamama. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle function
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

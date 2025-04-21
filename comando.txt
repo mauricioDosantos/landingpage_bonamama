@@ -1,0 +1,9 @@
+Crie uma landing page de produtos alimentícios da empresa bonamama, utilize o instagram como referência para criar o site: https://www.instagram.com/bonamamaoficial/ crie o site com as cores presentes no logo: #FE6901, #00A74A, #FF1B1F
+Segue 2 sites que podem ser usados como referência de modelo: https://www.nozdobrasil.com.br/?srsltid=AfmBOorPvUN--bYp9MNJopZds-15ige6_OeVzE3h0KkVU9LKkPT9Co64
+https://www.castanhadobem.com.br/
+
+
+A cor predominante será #FE6901
+Os butões devem usar a cor #00A74A
+O baner inicial deve ter um degradê da cor #FE6901
+A cor #FF1B1F deve ser usado em todas as litras da classe w-24 e na faixa LANÇAMENTO dos produtos
